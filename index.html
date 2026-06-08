@@ -1228,8 +1228,7 @@ function exportCSV() {
   if (claims.length === 0) return alert('No claims to export!');
   const headers = ['Name', 'Email', 'Bank', 'Account Number', 'Coupon Code', 'Amount', 'Time'];
   const rows = claims.map(c => [c.name, c.email, c.bank, c.account, c.code, `NGN ${c.amount}`, c.time]);
-  const csv = [headers, ...rows].map(r => r.join(',')).join('
-');
+  const csv = [headers, ...rows].map(r => r.join(',')).join('\\n');
   const blob = new Blob([csv], { type: 'text/csv' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
